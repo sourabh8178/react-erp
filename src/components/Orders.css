@@ -1,0 +1,46 @@
+/* Orders.css */
+
+.orders-header {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+
+.order-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.order-item {
+  width: 30%;
+  margin: 10px;
+  padding: 15px;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+}
+
+.order-actions {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 10px;
+}
+
+.order-actions button {
+  cursor: pointer;
+  background-color: #333;
+  color: #fff;
+  padding: 8px 15px;
+  margin: 0 5px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.order-actions button:hover {
+  background-color: #555;
+}
