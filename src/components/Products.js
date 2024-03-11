@@ -1,9 +1,7 @@
-// Products.js
 import React, { useState } from 'react';
-import './Products.css'; // Import the CSS file for Products styling
+import './Products.css'; 
 
 const Products = () => {
-  // Dummy data for product list
   const mockProducts = [
     { id: 1, name: 'Product 1', category: 'Category A', price: '$20.00', stockQuantity: 50 },
     { id: 2, name: 'Product 2', category: 'Category B', price: '$25.00', stockQuantity: 30 },
@@ -18,31 +16,80 @@ const Products = () => {
     { id: 11, name: 'Product 11', category: 'Category B', price: '$25.00', stockQuantity: 30 },
     { id: 12, name: 'Product 12', category: 'Category B', price: '$25.00', stockQuantity: 30 },
     { id: 13, name: 'Product 13', category: 'Category B', price: '$25.00', stockQuantity: 30 },
-    // ... Repeat for 10 products
   ];
 
   const [products, setProducts] = useState(mockProducts);
+  const [newProduct, setNewProduct] = useState({
+    name: '',
+    category: '',
+    price: '',
+    stockQuantity: '',
+  });
+
+  const [isEditing, setIsEditing] = useState(false);
+  const [editProductId, setEditProductId] = useState(null);
 
   const handleAddProduct = () => {
-    // Implement logic for adding a new product
-    console.log('Add Product clicked');
+    const updatedProducts = [...products, { ...newProduct, id: products.length + 1 }];
+    setProducts(updatedProducts);
+    setNewProduct({ name: '', category: '', price: '', stockQuantity: '' });
   };
 
   const handleEditProduct = (productId) => {
-    // Implement logic for editing a product
-    console.log(`Edit Product clicked - Product ID: ${productId}`);
+    const productToEdit = products.find((product) => product.id === productId);
+    setNewProduct({ ...productToEdit });
+    setIsEditing(true);
+    setEditProductId(productId);
+  };
+
+  const handleUpdateProduct = () => {
+    const updatedProducts = products.map((product) =>
+      product.id === editProductId ? { ...newProduct, id: editProductId } : product
+    );
+    setProducts(updatedProducts);
+    setNewProduct({ name: '', category: '', price: '', stockQuantity: '' });
+    setIsEditing(false);
+    setEditProductId(null);
   };
 
   const handleDeleteProduct = (productId) => {
-    // Implement logic for deleting a product
-    console.log(`Delete Product clicked - Product ID: ${productId}`);
+    const updatedProducts = products.filter((product) => product.id !== productId);
+    setProducts(updatedProducts);
   };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setNewProduct((prevProduct) => ({ ...prevProduct, [name]: value }));
+  };
+
 
   return (
     <div className="products-container">
     <div className="products-header">
       <h2>Products List</h2>
     </div>
+    <div className="add-product-form">
+        <h3>Add New Product</h3>
+        <label>Name:</label>
+        <input type="text" name="name" value={newProduct.name} onChange={handleInputChange} />
+        <label>Category:</label>
+        <input type="text" name="category" value={newProduct.category} onChange={handleInputChange} />
+        <label>Price:</label>
+        <input type="text" name="price" value={newProduct.price} onChange={handleInputChange} />
+        <label>Stock Quantity:</label>
+        <input
+          type="text"
+          name="stockQuantity"
+          value={newProduct.stockQuantity}
+          onChange={handleInputChange}
+        />
+        {isEditing ? (
+          <button onClick={handleUpdateProduct}>Update Product</button>
+        ) : (
+          <button onClick={handleAddProduct}>Add Product</button>
+        )}
+      </div>
+      
       <div className="product-list">
         {products.map((product) => (
           <div key={product.id} className="product-item">
@@ -57,9 +104,6 @@ const Products = () => {
           </div>
         ))}
       </div>
-      <button className="add-product-button" onClick={handleAddProduct}>
-        Add Product
-      </button>
     </div>
   );
 };

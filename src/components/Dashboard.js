@@ -1,9 +1,7 @@
-// Dashboard.js
 import React from 'react';
-import './Dashboard.css'; // Import the CSS file for Dashboard styling
+import './Dashboard.css'; 
 
 const Dashboard = () => {
-  // Dummy data for key metrics
   const totalProducts = 150;
   const totalOrders = 75;
   const totalRevenue = '$25,000';
@@ -34,9 +32,8 @@ const Dashboard = () => {
   );
 };
 
-// Dummy function for handling navigation
+
 const handleNavigation = (path) => {
-  // Implement your custom navigation logic here
   console.log(`Navigate to: ${path}`);
 };
 

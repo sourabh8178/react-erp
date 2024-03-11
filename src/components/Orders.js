@@ -1,9 +1,7 @@
-// Orders.js
 import React, { useState } from 'react';
-import './Orders.css'; // Import the CSS file for Orders styling
+import './Orders.css';
 
 const Orders = () => {
-  // Dummy data for order list
   const mockOrders = [
     { id: 1, customerName: 'John Doe', orderDate: '2022-03-09', status: 'Processing' },
     { id: 2, customerName: 'Jane Smith', orderDate: '2022-03-10', status: 'Shipped' },
@@ -16,23 +14,19 @@ const Orders = () => {
     { id: 9, customerName: 'Jane Smith', orderDate: '2022-03-10', status: 'Shipped' },
     { id: 10, customerName: 'Jane Smith', orderDate: '2022-03-10', status: 'Shipped' },
     { id: 11, customerName: 'Jane Smith', orderDate: '2022-03-10', status: 'Shipped' },
-    // ... Repeat for other orders
   ];
 
   const [orders, setOrders] = useState(mockOrders);
 
   const handleViewOrderDetails = (orderId) => {
-    // Implement logic for viewing order details
     console.log(`View Order Details clicked - Order ID: ${orderId}`);
   };
 
   const handleUpdateOrderStatus = (orderId) => {
-    // Implement logic for updating order status
     console.log(`Update Order Status clicked - Order ID: ${orderId}`);
   };
 
   const handleDeleteOrder = (orderId) => {
-    // Implement logic for deleting an order
     console.log(`Delete Order clicked - Order ID: ${orderId}`);
   };
 

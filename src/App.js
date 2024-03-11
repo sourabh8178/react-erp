@@ -34,7 +34,6 @@ const App = () => {
   );
 };
 
-// Function to get the page title based on the activePage
 const getPageTitle = (activePage) => {
   switch (activePage) {
     case 'dashboard':
